@@ -8,9 +8,13 @@ const eqArrays = function(a, b) {
         boolean = false;
       }
     }
-    return boolean;
+    if (boolean === true) {
+      return `✅✅✅ Assertion Passed: ${a} === ${b}`;
+    } else {
+      return `🛑🛑🛑 Assertion Failed: ${a} !== ${b}`;
+    }
   } else {
-    return boolean;
+    return `🛑🛑🛑 Assertion Failed: ${a} !== ${b}`;
   }
 };
 
