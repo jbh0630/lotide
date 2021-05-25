@@ -8,21 +8,21 @@ const eqArrays = function(a, b) {
         boolean = false;
       }
     }
-    return assertArraysEqual(boolean, a, b);
+    return boolean;
   } else {
-    return assertArraysEqual(boolean, a, b);
+    return boolean;
   }
 };
 
-const assertArraysEqual = function(boolean, a, b) {
+const assertArraysEqual = function(bool) {
  
-    if (boolean === true) {
-      return `✅✅✅ Assertion Passed: ${a} === ${b}`;
+    if (bool === true) {
+      return `✅✅✅ Assertion Passed`;
     } else {
-      return `🛑🛑🛑 Assertion Failed: ${a} !== ${b}`;
+      return `🛑🛑🛑 Assertion Failed`;
     }
 };
 
 
 
-console.log(eqArrays([1, 2, 4], [1, 2, 3]));
+console.log(assertArraysEqual(eqArrays([1, 2, 3], [1, 2, 3])));
