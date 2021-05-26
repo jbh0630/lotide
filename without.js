@@ -23,10 +23,22 @@ const assertArraysEqual = function(bool) {
 
 const without = function(source, itemsToRemove) {
    
-  return source.filter(s => !itemsToRemove.includes(s));
+  const longArray = source.length > itemsToRemove.length ? source.length : itemsToRemove;
+  const output = [];
+  for (let i = 0; i < longArray; i++) {
+    for (let j = 0; j < itemsToRemove.length; j++) {
+      if (source[i] !== itemsToRemove[j]) {
+        output.push(source[i]);
+      }
+    }
+  }
+  return output;
 };
+// source.filter(s => !itemsToRemove.includes(s))
 
 const words = ["hello", "world", "lighthouse"];
 console.log(assertArraysEqual(eqArrays(words, ["hello", "world", "lighthouse"])));
 console.log(assertArraysEqual(eqArrays(without(words, ["lighthouse"]), ["hello", "world"])));
 console.log(assertArraysEqual(eqArrays(without(words, ["world"]), ["hello", "world"])));
+console.log(assertArraysEqual(eqArrays(without(words, ["world"]), ["hello", "lighthouse"])));
+console.log(assertArraysEqual(eqArrays(without(words, ["hello"]), ["world", "lighthouse"])));
