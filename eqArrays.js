@@ -16,12 +16,11 @@ const eqArrays = function(a, b) {
         boolean = false;
       }
     }
-    return boolean;
-  } else {
-    return boolean;
   }
+  return boolean;
 };
 console.log(assertEqual(eqArrays([1, 2, 3], [1, 2, 3]), true));
 console.log(assertEqual(eqArrays([1, 2, 4], [1, 2, 3]), true));
 console.log(assertEqual(eqArrays([1, 2, 3, 4], [1, 2, 3, 4]), true));
 console.log(assertEqual(eqArrays([1, 2, 3, 4], [1, 2, 3]), true));
+console.log(assertEqual(eqArrays([1, 2, 3, 4], [1, 2, 3]), false));
