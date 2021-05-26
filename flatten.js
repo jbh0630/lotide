@@ -1,24 +1,24 @@
-const eqArrays = function(a, b) {
+const eqArrays = function(actual, expected) {
   let boolean = false;
-  if (a.length === b.length) {
-    for (let i = 0; i < a.length; i++) {
-      if (a[i] === b[i]) {
+  if (actual.length === expected.length) {
+    for (let i = 0; i < actual.length; i++) {
+      if (actual[i] === expected[i]) {
         boolean = true;
       } else {
         boolean = false;
       }
     }
-  } 
+  }
   return boolean;
 };
 
-const assertArraysEqual = function(bool) {
- 
-    if (bool === true) {
-      return `✅✅✅ Assertion Passed`;
-    } else {
-      return `🛑🛑🛑 Assertion Failed`;
-    }
+const assertArraysEqual = function(actual, expected) {
+  const eqArrayResult = eqArrays(actual, expected);
+  if (eqArrayResult === true) {
+    return `✅✅✅ Assertion Passed: [${actual}] === [${expected}]`;
+  } else {
+    return `🛑🛑🛑 Assertion Failed: [${actual}] !== [${expected}]`;
+  }
 };
 
 const flatten = function(array) {
@@ -36,7 +36,7 @@ const flatten = function(array) {
 };
 
 console.log(flatten([1, 2, [3, 4], 5, [6]]));
-console.log(assertArraysEqual(eqArrays(flatten([1, 2, [3, 4], 5, [6]]), [1, 2, 3, 4, 5, 6])));
-console.log(assertArraysEqual(eqArrays(flatten([1, 2, [3, 4], 5, [6]]), [1, 2, 3, 4, [5, 6]])));
-console.log(assertArraysEqual(eqArrays(flatten([1, 66, 2, [2, 46, 4], [2, 4, 3]]), [1, 66, 2, 2, 46, 4, 2, 4, 3])));
-console.log(assertArraysEqual(eqArrays(flatten([1, 66, 2, [2, 46, 4], [2, 4, 3]]), [1, 66, 2, 2, 46, 4, 2, 4, 3, 2])));
+console.log(assertArraysEqual(flatten([1, 2, [3, 4], 5, [6]]), [1, 2, 3, 4, 5, 6]));
+console.log(assertArraysEqual(flatten([1, 2, [3, 4], 5, [6]]), [1, 2, 3, 4, [5, 6]]));
+console.log(assertArraysEqual(flatten([1, 66, 2, [2, 46, 4], [2, 4, 3]]), [1, 66, 2, 2, 46, 4, 2, 4, 3]));
+console.log(assertArraysEqual(flatten([1, 66, 2, [2, 46, 4], [2, 4, 3]]), [1, 66, 2, 2, 46, 4, 2, 4, 3, 2]));
