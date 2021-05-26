@@ -8,10 +8,8 @@ const eqArrays = function(a, b) {
         boolean = false;
       }
     }
-    return boolean;
-  } else {
-    return boolean;
   }
+  return boolean;
 };
 
 const assertArraysEqual = function(bool) {
