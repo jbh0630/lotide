@@ -1,8 +1,8 @@
-const eqArrays = function(a, b) {
+const eqArrays = function(actual, expected) {
   let boolean = false;
-  if (a.length === b.length) {
-    for (let i = 0; i < a.length; i++) {
-      if (a[i] === b[i]) {
+  if (actual.length === expected.length) {
+    for (let i = 0; i < actual.length; i++) {
+      if (actual[i] === expected[i]) {
         boolean = true;
       } else {
         boolean = false;
@@ -12,13 +12,13 @@ const eqArrays = function(a, b) {
   return boolean;
 };
 
-const assertArraysEqual = function(bool) {
- 
-    if (bool === true) {
-      return `✅✅✅ Assertion Passed`;
-    } else {
-      return `🛑🛑🛑 Assertion Failed`;
-    }
+const assertArraysEqual = function(actual, expected) {
+  const eqArrayResult = eqArrays(actual, expected);
+  if (eqArrayResult === true) {
+    return `✅✅✅ Assertion Passed: [${actual}] === [${expected}]`;
+  } else {
+    return `🛑🛑🛑 Assertion Failed: [${actual} !== ${expected}]`;
+  }
 };
 
 const without = function(source, itemsToRemove) {
@@ -37,8 +37,8 @@ const without = function(source, itemsToRemove) {
 // source.filter(s => !itemsToRemove.includes(s))
 
 const words = ["hello", "world", "lighthouse"];
-console.log(assertArraysEqual(eqArrays(words, ["hello", "world", "lighthouse"])));
-console.log(assertArraysEqual(eqArrays(without(words, ["lighthouse"]), ["hello", "world"])));
-console.log(assertArraysEqual(eqArrays(without(words, ["world"]), ["hello", "world"])));
-console.log(assertArraysEqual(eqArrays(without(words, ["world"]), ["hello", "lighthouse"])));
-console.log(assertArraysEqual(eqArrays(without(words, ["hello"]), ["world", "lighthouse"])));
+console.log(assertArraysEqual(words, ["hello", "world", "lighthouse"]));
+console.log(assertArraysEqual(without(words, ["lighthouse"]), ["hello", "world"]));
+console.log(assertArraysEqual(without(words, ["world"]), ["hello", "world"]));
+console.log(assertArraysEqual(without(words, ["world"]), ["hello", "lighthouse"]));
+console.log(assertArraysEqual(without(words, ["hello"]), ["world", "lighthouse"]));
