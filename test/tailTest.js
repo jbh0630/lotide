@@ -1,6 +1,14 @@
+const assert = require('chai').assert;
 const tail = require('../tail');
-const assertEqual = require('../assertEqual');
 
-console.log(assertEqual(tail('light'), 'ight'));
-console.log(assertEqual(tail('monday'), 'onday'));
-console.log(assertEqual(tail('mac'), 'ac'));
+describe('#tail', () => {
+  it('returns "ight" for "light"', () => {
+    assert.deepEqual(tail('light'), 'ight');
+  });
+  it('returns "onday" for "monday"', () => {
+    assert.deepEqual(tail('monday'), 'onday');
+  });
+  it('returns "ac" for "mac"', () => {
+    assert.deepEqual(tail('mac'), 'ac');
+  });
+});
