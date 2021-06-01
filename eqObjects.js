@@ -1,11 +1,3 @@
-const assertEqual = function(actual, expected) {
-  if (actual === expected) {
-    return `✅✅✅ Assertion Passed: ${actual} === ${expected}`;
-  } else {
-    return `🛑🛑🛑 Assertion Failed: ${actual} !== ${expected}`;
-  }
-};
-
 // Primitives As Values (Implementation)
 // const eqObjects1 = function(object1, object2) {
 //   const object1Keys = Object.keys(object1);
@@ -56,20 +48,6 @@ const assertEqual = function(actual, expected) {
 //   }
 // };
 
-const eqArrays = function(a, b) {
-  let boolean = false;
-  if (a.length === b.length) {
-    for (let i = 0; i < a.length; i++) {
-      if (a[i] === b[i]) {
-        boolean = true;
-      } else {
-        boolean = false;
-      }
-    }
-  }
-  return boolean;
-};
-
 const eqObjects2 = function(object1, object2) {
   const object1Keys = Object.keys(object1);
   const object2Keys = Object.keys(object2);
@@ -90,11 +68,4 @@ const eqObjects2 = function(object1, object2) {
   });
 
 };
-
-
-console.log(assertEqual(eqObjects2({ a: { z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), true));
-
-console.log(assertEqual(eqObjects2({ a: { y: 0, z: 1 }, b: 2 }, { a: { z: 1 }, b: 2 }), false));
-console.log(assertEqual(eqObjects2({ a: { y: 0, z: 1 }, b: 2 }, { a: 1, b: 2 }), false));
-
-console.log(assertEqual(eqObjects2([1,2,[4,1, { a: [1,2], b: 4}],4], [1,2,[4,1 , { a: [1,2], b: 4}],4]), true));
+module.exports = eqObjects2;
